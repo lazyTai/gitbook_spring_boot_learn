@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gitbook build && git subtree push --prefix=_book origin gh-pages ",
-    "dev": "gitbook serve && git subtree push --prefix=_book origin gh-pages "
+    "dev": "gitbook serve && git subtree push --prefix=_book origin gh-pages ",
+    "book": "git subtree push -f  --prefix=_book origin gh-pages "
   },
   "repository": {
     "type": "git",
