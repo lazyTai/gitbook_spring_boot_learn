@@ -214,6 +214,155 @@ or more traditional war deployments. </p>
 <li>Absolutely no code generation and no requirement for XML configuration.
 &#x7EDD;&#x5BF9;&#x4E0D;&#x8981;xml</li>
 </ul>
+<h1 id="system-requirements">System Requirements</h1>
+<p>&#x7CFB;&#x7EDF;&#x8981;&#x6C42;
+Spring Boot 2.1.0.BUILD-SNAPSHOT requires 
+Java 8 or 9 </p>
+<p>and Spring Framework 5.0.5.RELEASE or above. </p>
+<p>Explicit build support is provided for</p>
+<p>Maven 3.2+ 
+and 
+Gradle 4.</p>
+<h1 id="servlet-containers">Servlet Containers</h1>
+<p>&#x5305;&#x62EC;&#x7684;&#x670D;&#x52A1;&#x5668;
+<img src="2018-04-22-00-05-12.png" alt=""></p>
+<h1 id="installing-spring-boot">Installing Spring Boot</h1>
+<p>Spring Boot can be used with &#x201C;classic&#x201D; Java development tools or installed as a command line tool.</p>
+<p>Either way, you need Java SDK v1.8 or higher. Before you begin, you should check your current Java installation by using the following command:</p>
+<pre><code>$ java -version
+</code></pre><h1 id="installation-instructions-for-the-java-developer">installation Instructions for the Java Developer</h1>
+<p><img src="2018-04-22-00-06-23.png" alt=""></p>
+<p>You can use Spring Boot in the same way as any standard Java library.</p>
+<p> To do so,</p>
+<p>include the appropriate spring-boot-*.jar files on your classpath.</p>
+<p>Spring Boot does not require any special tools integration,</p>
+<p>so you can use any IDE or text editor. </p>
+<p>Also, there is nothing special about a Spring Boot application, so you can run and debug a Spring Boot application as you would any other Java program.</p>
+<p>Although you could copy Spring Boot jars, we generally recommend that you use a build tool that supports dependency management (such as Maven or Gradle).
+<img src="2018-04-22-00-07-45.png" alt="">
+<img src="2018-04-22-00-07-58.png" alt=""></p>
+<h1 id="maven-installation">Maven Installation</h1>
+<p>Spring Boot is compatible 
+<img src="2018-04-22-00-08-54.png" alt=""> Apache Maven 3.2 or above. If you do not already have Maven installed,you can follow the instructions at maven.apache.org.</p>
+<p>Spring Boot dependencies use the org.springframework.boot groupId. Typically,<img src="2018-04-22-00-09-42.png" alt=""> your Maven POM file inherits from the spring-boot-starter-parent project and declares<img src="2018-04-22-00-10-15.png" alt=""> dependencies to one or more &#x201C;Starters&#x201D;.<img src="2018-04-22-00-10-29.png" alt=""> Spring Boot also provides an optional<img src="2018-04-22-00-10-45.png" alt=""> Maven plugin to create executable jars.</p>
+<p>The following listing shows a typical pom.xml file:
+ <img src="2018-04-22-00-11-42.png" alt=""></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.example&lt;/groupId&gt;
+    &lt;artifactId&gt;myproject&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+
+    &lt;!-- Inherit defaults from Spring Boot --&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.1.0.BUILD-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+
+    &lt;!-- Add typical dependencies for a web application --&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+    &lt;!-- Package as an executable jar --&gt;
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+
+    &lt;!-- Add Spring repositories --&gt;
+    &lt;!-- (you don&apos;t need this if you are using a .RELEASE version) --&gt;
+    &lt;repositories&gt;
+        &lt;repository&gt;
+            &lt;id&gt;spring-snapshots&lt;/id&gt;
+            &lt;url&gt;https://repo.spring.io/snapshot&lt;/url&gt;
+            &lt;snapshots&gt;&lt;enabled&gt;true&lt;/enabled&gt;&lt;/snapshots&gt;
+        &lt;/repository&gt;
+        &lt;repository&gt;
+            &lt;id&gt;spring-milestones&lt;/id&gt;
+            &lt;url&gt;https://repo.spring.io/milestone&lt;/url&gt;
+        &lt;/repository&gt;
+    &lt;/repositories&gt;
+    &lt;pluginRepositories&gt;
+        &lt;pluginRepository&gt;
+            &lt;id&gt;spring-snapshots&lt;/id&gt;
+            &lt;url&gt;https://repo.spring.io/snapshot&lt;/url&gt;
+        &lt;/pluginRepository&gt;
+        &lt;pluginRepository&gt;
+            &lt;id&gt;spring-milestones&lt;/id&gt;
+            &lt;url&gt;https://repo.spring.io/milestone&lt;/url&gt;
+        &lt;/pluginRepository&gt;
+    &lt;/pluginRepositories&gt;
+&lt;/project&gt;
+</code></pre><p><img src="2018-04-22-00-12-19.png" alt=""></p>
+<h1 id="quick-start-spring-cli-example">Quick-start Spring CLI Example</h1>
+<pre><code>@RestController
+class ThisWillActuallyRun {
+
+    @RequestMapping(&quot;/&quot;)
+    String home() {
+        &quot;Hello World!&quot;
+    }
+
+}
+</code></pre><p>Then run it from a shell, as follows:</p>
+<pre><code>spring run app.groovy
+</code></pre><p>Open localhost:8080 in your favorite web browser. You should see the following output:</p>
+<pre><code>Hello World!
+</code></pre><h1 id="adding-classpath-dependencies">Adding Classpath Dependencies</h1>
+<p>Spring Boot provides a number of &#x201C;Starters&#x201D; 
+<img src="2018-04-22-00-15-40.png" alt="">that let you add jars to your classpath. Our sample application has already used spring-boot-starter-parent in the parent section of the POM. The spring-boot-starter-parent is a special starter that provides useful Maven defaults. It also provides a dependency-management section <img src="2018-04-22-00-16-26.png" alt="">so that you can omit <img src="2018-04-22-00-16-41.png" alt="">version tags for &#x201C;blessed&#x201D; <img src="2018-04-22-00-17-02.png" alt="">dependencies.</p>
+<p>Other &#x201C;Starters&#x201D; provide dependencies that you are likely to need when developing a specific type of application. Since we are developing a web application, we add a spring-boot-starter-web dependency. Before that, we can look at what we currently have by running the following command:</p>
+<pre><code>$ mvn dependency:tree
+
+[INFO] com.example:myproject:jar:0.0.1-SNAPSHOT
+</code></pre><p>The mvn dependency:tree command prints a tree representation<img src="2018-04-22-00-18-18.png" alt=""> of your project dependencies. You can see that spring-boot-starter-parent provides no dependencies by itself. To add the necessary dependencies, edit your pom.xml and add the spring-boot-starter-web dependency immediately below the parent section:<img src="2018-04-22-00-18-49.png" alt=""></p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre><p>If you run mvn dependency:tree again, you see that there are now a number of additional dependencies, including the Tomcat web server and Spring Boot itself.</p>
+<h1 id="writing-the-code">Writing the Code</h1>
+<p>To finish our application, we need to create a single Java file. By default, Maven compiles sources from src/main/java, so you need to create that folder structure and then add a file named src/main/java/Example.java to contain the following code:</p>
+<pre><code>import org.springframework.boot.*;
+import org.springframework.boot.autoconfigure.*;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@EnableAutoConfiguration
+public class Example {
+
+    @RequestMapping(&quot;/&quot;)
+    String home() {
+        return &quot;Hello World!&quot;;
+    }
+
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(Example.class, args);
+    }
+
+}
+</code></pre><p>Although there is not much code here, quite a lot is going on. We step through <img src="2018-04-22-00-20-49.png" alt="">the important parts in the next few sections.</p>
+<h1 id="the-restcontroller-and-requestmapping-annotations">The @RestController and @RequestMapping Annotations</h1>
+<p>The first annotation on our Example class is @RestController. This is known as a stereotype <img src="2018-04-22-00-21-37.png" alt="">annotation. It provides hints<img src="2018-04-22-00-21-53.png" alt=""> for people reading the code and for Spring that the class plays a specific role. In this case, our class is a web @Controller, so Spring considers it when handling <img src="incoming.png" alt=""> web requests.</p>
+<p>The @RequestMapping annotation provides &#x201C;routing&#x201D; information. It tells Spring that any HTTP request with the / path should be mapped to the home method. The @RestController annotation tells Spring to render the resulting string directly back to the caller.</p>
+<h1 id="the-enableautoconfiguration-annotation">The @EnableAutoConfiguration Annotation</h1>
+<p>The second class-level annotation is @EnableAutoConfiguration. This annotation tells Spring Boot to &#x201C;guess&#x201D; how you want to configure Spring, based on the jar dependencies that you have added. Since spring-boot-starter-web added Tomcat and Spring MVC, the auto-configuration <img src="assumes.png" alt=""> that you are developing a web application and sets up Spring accordingly.</p>
+<h1 id="the-main-method">The &#x201C;main&#x201D; Method</h1>
+<p>The final part of our application is the main method. This is just a standard method that follows the Java <img src="convention.png" alt=""> for an application entry point. Our main method <img src="delegates.png" alt=""> to Spring Boot&#x2019;s SpringApplication class by calling run. SpringApplication bootstraps<img src="2018-04-22-00-26-01.png" alt=""> our application, starting Spring, which, in turn<img src="2018-04-22-00-26-18.png" alt="">, starts the auto-configured Tomcat web server. We need to pass Example.class as an argument to the run method to tell SpringApplication which is the primary Spring component. The args array is also passed through to expose <img src="2018-04-22-00-26-43.png" alt="">any command-line arguments.</p>
 
                                 
                                 </section>
@@ -257,7 +406,7 @@ or more traditional war deployments. </p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.First_Steps","level":"1.2","depth":1,"next":{"title":"#.problems","level":"1.3","depth":1,"path":"src/problems.md","ref":"./src/problems.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/1.First_Steps.md","mtime":"2018-04-21T16:00:48.982Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-21T16:01:45.474Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.First_Steps","level":"1.2","depth":1,"next":{"title":"#.problems","level":"1.3","depth":1,"path":"src/problems.md","ref":"./src/problems.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/1.First_Steps.md","mtime":"2018-04-21T16:27:01.656Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-21T16:32:19.719Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
