@@ -9,3 +9,7 @@ node_modules/
 /runtime
 runtime/
 /runtime/
+/_book
+./_book
+./_book/
+_book/
