@@ -1,0 +1,21 @@
+{
+  "name": "gitbook_spring_boot_learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gitbook build && git subtree push --prefix=_book origin gh-pages ",
+    "dev": "gitbook serve && git subtree push --prefix=_book origin gh-pages "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lazyTai/gitbook_spring_boot_learn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lazyTai/gitbook_spring_boot_learn/issues"
+  },
+  "homepage": "https://github.com/lazyTai/gitbook_spring_boot_learn#readme"
+}
