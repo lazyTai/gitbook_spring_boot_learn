@@ -1,0 +1,511 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.Working with Spring Boot · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="problems.html" />
+    
+    
+    <link rel="prev" href="1.First_Steps.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="1.First_Steps.html">
+            
+                <a href="1.First_Steps.html">
+            
+                    
+                    1.First_Steps
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="2.WorkingwithSpringBoot.html">
+            
+                <a href="2.WorkingwithSpringBoot.html">
+            
+                    
+                    2.Working with Spring Boot
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="problems.html">
+            
+                <a href="problems.html">
+            
+                    
+                    #.problems
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >2.Working with Spring Boot</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="working-with-spring-boot">Working with Spring Boot</h1>
+<p>Ready to actually start using Spring Boot? We have you covered:</p>
+<ul>
+<li><p>Build systems: Maven | Gradle | Ant | Starters</p>
+</li>
+<li><p>Best practices: 
+<img src="2018-04-22-13-12-28.png" height="50">
+Code Structure <img src="2018-04-22-13-27-35.png" alt="">| @Configuration | @EnableAutoConfiguration | Beans and Dependency Injection</p>
+</li>
+<li>Running your code IDE | Packaged | Maven | Gradle</li>
+<li>Packaging your app: Production jars</li>
+<li>Spring Boot CLI: Using the CLI</li>
+</ul>
+<p><img src="2018-04-22-13-29-06.png" alt=""></p>
+<h1 id="using-spring-boot">Using Spring Boot</h1>
+<p>This section goes into more detail about how you should use Spring Boot. 
+It covers<img src="2018-04-22-13-30-03.png" alt=""> topics such as build systems, auto-configuration, and how to run your applications. We also cover some Spring Boot best practices. Although there is nothing particularly special about Spring Boot (it is just another library that you can consume), there are a few recommendations that, when followed, make your development process a little easier.</p>
+<h2 id="build-systems">Build Systems</h2>
+<h3 id="dependency-management">Dependency Management</h3>
+<p>Each release of Spring Boot provides a curated<img src="2018-04-22-13-31-31.png" alt=""> list of dependencies that it supports. In practice, you do not need to provide a version for any of these dependencies in your build configuration, as Spring Boot manages that for you. When you upgrade Spring Boot itself, these dependencies are upgraded as well in a consistent way.</p>
+<p>The curated list contains all the spring modules that you can use with Spring Boot as well as a refined<img src="2018-04-22-13-32-07.png" alt=""> list of third party libraries. The list is available as a standard Bills of Materials (spring-boot-dependencies) that can be used with both Maven and Gradle.</p>
+<h4 id="maven">Maven</h4>
+<p>Maven users can inherit from the spring-boot-starter-parent project to obtain <img src="2018-04-22-13-33-00.png" alt="">sensible <img src="2018-04-22-13-33-14.png" alt="">defaults. The parent project provides the following features:</p>
+<pre><code>Java 1.8 as the default compiler level.
+UTF-8 source encoding.
+A Dependency Management section, inherited from the spring-boot-dependencies pom, that manages the versions of common dependencies. This dependency management lets you omit &lt;version&gt; tags for those dependencies when used in your own pom.
+Sensible resource filtering.
+Sensible plugin configuration (exec plugin, Git commit ID, and shade).
+Sensible resource filtering for application.properties and application.yml including profile-specific files (for example, application-dev.properties and application-dev.yml)
+</code></pre><h4 id="inheriting-the-starter-parent">Inheriting the Starter Parent</h4>
+<pre><code>&lt;!-- Inherit defaults from Spring Boot --&gt;
+&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;2.1.0.BUILD-SNAPSHOT&lt;/version&gt;
+&lt;/parent&gt;
+</code></pre><h4 id="using-spring-boot-without-the-parent-pom">Using Spring Boot without the Parent POM</h4>
+<p>Not everyone likes inheriting from the spring-boot-starter-parent POM. You may have your own corporate <img src="2018-04-22-13-35-28.png" alt="">standard parent that you need to use or you may prefer to explicitly declare all your Maven configuration.</p>
+<p>If you do not want to use the spring-boot-starter-parent, you can still keep the benefit of the dependency management (but not the plugin management) by using a scope=import dependency, as follows:</p>
+<pre><code>&lt;dependencyManagement&gt;
+        &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;!-- Import dependency management from Spring Boot --&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;
+            &lt;version&gt;2.1.0.BUILD-SNAPSHOT&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+            &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+</code></pre><p>The preceding sample<img src="2018-04-22-13-36-08.png" alt=""> setup does not let you override individual dependencies by using a property, as explained above. To achieve the same result, you need to add an entry in the dependencyManagement of your project before the spring-boot-dependencies entry. For instance, to upgrade to another Spring Data release train, you could add the following element to your pom.xml:</p>
+<pre><code>&lt;dependencyManagement&gt;
+    &lt;dependencies&gt;
+        &lt;!-- Override Spring Data release train provided by Spring Boot --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-data-releasetrain&lt;/artifactId&gt;
+            &lt;version&gt;Fowler-SR2&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+            &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;
+            &lt;version&gt;2.1.0.BUILD-SNAPSHOT&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+            &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+</code></pre><h4 id="using-the-spring-boot-maven-plugin">Using the Spring Boot Maven Plugin</h4>
+<p><img src="2018-04-22-13-37-24.png" alt="">
+Spring Boot includes a Maven plugin that can package the project as an executable jar. Add the plugin to your <plugins> section if you want to use it, as shown in the following example:</plugins></p>
+<pre><code>&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre><h1 id="structuring-your-code">Structuring<img src="2018-04-22-13-38-36.png" alt=""> Your Code</h1>
+<p>Spring Boot does not require any specific code layout to work. However, there are some best practices that help.</p>
+<h2 id="1using-the-default-package">1Using the &#x201C;default&#x201D; Package</h2>
+<p>When a class does not include a package declaration<img src="2018-04-22-13-39-07.png" alt="">, it is considered <img src="2018-04-22-13-39-16.png" alt="">to be in the &#x201C;default package&#x201D;. The use of the &#x201C;default package&#x201D; is generally discouraged<img src="2018-04-22-13-39-37.png" alt=""> and should be avoided. It can cause particular problems for Spring Boot applications that use the @ComponentScan, @EntityScan, or @SpringBootApplication annotations, since every class from every jar is read.</p>
+<h2 id="2locating-the-main-application-class">2Locating the Main Application Class</h2>
+<p><img src="2018-04-22-13-40-11.png" alt="">
+We generally recommend that you locate your main application class in a root package above other classes. </p>
+<p>The @SpringBootApplication annotation is often placed on your main class,</p>
+<p>and it implicitly defines a base &#x201C;search package&#x201D; for certain items. For example, if you are writing a JPA application, the package of the @SpringBootApplication annotated class is used to search for @Entity items. Using a root package also allows component scan to apply only on your project.
+<img src="2018-04-22-13-40-55.png" alt=""></p>
+<p>The following listing shows a typical layout:</p>
+<pre><code>com
+ +- example
+     +- myapplication
+         +- Application.java
+         |
+         +- customer
+         |   +- Customer.java
+         |   +- CustomerController.java
+         |   +- CustomerService.java
+         |   +- CustomerRepository.java
+         |
+         +- order
+             +- Order.java
+             +- OrderController.java
+             +- OrderService.java
+             +- OrderRepository.java
+</code></pre><p>The Application.java file would declare the main method, along with the basic @SpringBootApplication, as follows:
+<img src="2018-04-22-13-42-05.png" alt="">
+<img src="2018-04-22-13-42-24.png" alt=""></p>
+<pre><code>package com.example.myapplication;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+}
+</code></pre><h1 id="configuration-classes">Configuration Classes</h1>
+<p>Spring Boot favors Java-based configuration.</p>
+<p> Although it is possible to use SpringApplication with XML sources, we generally recommend that your primary source be a single @Configuration class. </p>
+<p> Usually the class that defines the main method is a good candidate as the primary @Configuration.
+<img src="2018-04-22-13-43-10.png" alt="">
+<img src="2018-04-22-13-43-39.png" alt=""></p>
+<h1 id="auto-configuration">Auto-configuration</h1>
+<p>Spring Boot auto-configuration attempts to automatically configure your Spring application based on the jar dependencies that you have added. 
+<img src="2018-04-22-13-44-25.png" alt=""></p>
+<p>For example, if HSQLDB is on your classpath, and you have not manually configured any database connection beans, then Spring Boot auto-configures an in-memory database.</p>
+<p>You need to opt-in to auto-configuration by adding the @EnableAutoConfiguration or @SpringBootApplication annotations to one of your @Configuration classes.
+<img src="2018-04-22-13-45-22.png" alt=""></p>
+<h2 id="1-gradually-replacing-auto-configuration">1 Gradually Replacing Auto-configuration</h2>
+<p><img src="2018-04-22-13-45-47.png" alt=""></p>
+<p>Auto-configuration is non-invasive. At any point, you can start to define your own configuration to replace specific parts of the auto-configuration. 
+<img src="2018-04-22-13-46-06.png" alt=""></p>
+<p>For example, if you add your own DataSource bean, the default embedded database support backs away.
+<img src="2018-04-22-13-46-28.png" alt=""></p>
+<p>If you need to find out what auto-configuration is currently being applied, and why, start your application with the --debug switch. Doing so enables debug logs for a selection of core loggers and logs a conditions report to the console.</p>
+<p>Disabling Specific Auto-configuration Classes</p>
+<p>If you find that specific auto-configuration classes that you do not want are being applied, you can use the exclude attribute of @EnableAutoConfiguration to disable them, as shown in the following example:</p>
+<pre><code>
+importorg.springframework.boot.autoconfigure.*;
+importorg.springframework.boot.autoconfigure.jdbc.*;
+importorg.springframework.context.annotation.*;
+
+@Configuration
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+public class MyConfiguration 
+{
+}
+</code></pre><p>If the class is not on the classpath, you can use the excludeName attribute of the annotation and specify the fully qualified name instead. Finally, you can also control the list of auto-configuration classes to exclude by using the spring.autoconfigure.exclude property.</p>
+<p>Spring Beans and Dependency Injection</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3767836-6af5602332e5eaba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>You are free to use any of the standard Spring Framework techniques to define your beans and their injected dependencies. 
+For simplicity, we often find that using @ComponentScan (to find your beans) 
+and using @Autowired 
+(to do constructor injection) works well.</p>
+<p>If you structure your code as suggested above (locating your application class in a root package), you can add @ComponentScan without any arguments. </p>
+<p>All of your application components (@Component, @Service, @Repository, @Controller etc.) are automatically registered as Spring Beans.</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3767836-83a344866558cb8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png">
+<img src="https://upload-images.jianshu.io/upload_images/3767836-ecbffc1729737da1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>The following example shows a @Service Bean that uses constructor injection to obtain a required RiskAssessor bean:</p>
+<pre><code>package com.example.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class DatabaseAccountService implements AccountService {
+
+    private final RiskAssessor riskAssessor;
+
+    @Autowired
+    public DatabaseAccountService(RiskAssessor riskAssessor) {
+        this.riskAssessor = riskAssessor;
+    }
+
+    // ...
+
+}
+</code></pre><p>If a bean has one constructor, you can omit the @Autowired, as shown in the following example:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3767836-a5bc1705c7975431.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<pre><code>@Service
+public class DatabaseAccountService implements AccountService {
+
+    private final RiskAssessor riskAssessor;
+
+    public DatabaseAccountService(RiskAssessor riskAssessor) {
+        this.riskAssessor = riskAssessor;
+    }
+
+    // ...
+
+}
+</code></pre><p>Using the @SpringBootApplication Annotation</p>
+<p>Many Spring Boot developers like their apps to use auto-configuration, component scan and be able to define extra configuration on their &quot;application class&quot;.
+ A single @SpringBootApplication annotation can be used to enable those tree features, that is:</p>
+<ul>
+<li><code>@EnableAutoConfiguration</code>: enable <a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-auto-configuration" title="16. Auto-configuration" target="_blank">Spring Boot&#x2019;s auto-configuration mechanism</a>
+<img src="https://upload-images.jianshu.io/upload_images/3767836-1a4a0115a50e04fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+</ul>
+<ul>
+<li><p><code>@ComponentScan</code>: enable <code>@Component</code> scan on the package where the application is located (see <a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-structuring-your-code" title="14. Structuring Your Code" target="_blank">the best practices</a>)</p>
+</li>
+<li><p><code>@Configuration</code>: allow to register extra beans in the context or import additional configuration classes</p>
+</li>
+</ul>
+<p>The @SpringBootApplication annotation is equivalent to using @Configuration, @EnableAutoConfiguration, and @ComponentScan with their default attributes, as shown in the following example:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3767836-77a34a4854b4ee54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<pre><code>package com.example.myapplication;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+}
+</code></pre><p>Running Your Application</p>
+<p>One of the biggest advantages of packaging your application as a jar and using an embedded HTTP server is that you can run your application as you would any other. Debugging Spring Boot applications is also easy. You do not need any special IDE plugins or extensions.</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3767836-8ffb000ef82e21e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>Developer Tools</p>
+<p>Spring Boot includes an additional set of tools that can make the application development experience a little more pleasant. 
+<img src="https://upload-images.jianshu.io/upload_images/3767836-46f7cae6b59cb0b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>The spring-boot-devtools module can be included in any project to provide additional development-time features. To include devtools support, add the module dependency to your build, as shown in the following listings for Maven and Gradle:
+Maven. </p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+        &lt;optional&gt;true&lt;/optional&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="1.First_Steps.html" class="navigation navigation-prev " aria-label="Previous page: 1.First_Steps">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="problems.html" class="navigation navigation-next " aria-label="Next page: #.problems">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.Working with Spring Boot","level":"1.3","depth":1,"next":{"title":"#.problems","level":"1.4","depth":1,"path":"src/problems.md","ref":"./src/problems.md","articles":[]},"previous":{"title":"1.First_Steps","level":"1.2","depth":1,"path":"src/1.First_Steps.md","ref":"./src/1.First_Steps.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"src/2.WorkingwithSpringBoot.md","mtime":"2018-04-22T06:21:39.211Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-22T06:21:49.803Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
